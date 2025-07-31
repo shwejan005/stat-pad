@@ -1,5 +1,7 @@
 'use client'
 
+import clerkAppearance from "@/lib/clerkAppearance";
+import { SignInButton } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import { AlertTriangle, User, Sword, BarChart3 } from "lucide-react";
 import Link from "next/link";
@@ -38,12 +40,13 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <Link
-          href="/avatar"
-          className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-300 px-6 py-3 rounded-xl text-lg font-medium"
-        >
-          Get Started
-        </Link>
+        <SignInButton mode="modal" appearance={clerkAppearance}>
+          <button
+            className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-300 px-6 py-3 rounded-xl text-lg font-medium"
+          >
+            Get Started
+          </button>
+        </SignInButton>
       </motion.div>
 
       {/* Disclaimer */}
