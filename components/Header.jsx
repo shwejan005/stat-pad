@@ -4,7 +4,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 export default function Header () {
   return (
     <nav className="flex justify-between items-center px-12 py-4 border-b border-white/10">
-      <h1 className="text-2xl font-bold tracking-tight text-white">DevDuel</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-white">StatPad</h1>
       <div>
         <SignedIn>
           <UserButton />

@@ -4,7 +4,6 @@ import clerkAppearance from "@/lib/clerkAppearance";
 import { SignInButton } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import { AlertTriangle, User, Sword, BarChart3 } from "lucide-react";
-import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -20,7 +19,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        Welcome to <span className="text-purple-500">DevDuel</span>
+        Welcome to <span className="text-purple-500">StatPad</span>
       </motion.h1>
 
       {/* Subheading */}
@@ -58,7 +57,7 @@ export default function Hero() {
       >
         <AlertTriangle className="text-purple-600 w-5 h-5 mt-[2px]" />
         <span>
-          DevDuel is for entertainment. Stats are approximate. Don’t take battles too seriously — have fun!
+          StatPad is for entertainment. Stats are approximate. Don’t take battles too seriously — have fun!
         </span>
       </motion.div>
 

@@ -9,7 +9,7 @@ const font = League_Spartan({
 });
 
 export const metadata = {
-  title: "DevDuel",
+  title: "StatPad",
   description: "Battle your dev skills in a gamified arena",
 };
 
