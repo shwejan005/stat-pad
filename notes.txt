@@ -1,4 +1,4 @@
-FOR LENIS SMOOTH SCROLL
+1 -- FOR LENIS SMOOTH SCROLL
 
 npm install lenis @studio-freight/react-lenis --legacy-peer-deps
 
@@ -7,3 +7,8 @@ npm install lenis @studio-freight/react-lenis --legacy-peer-deps
 </ReactLenis>
 
 wrap body in layout with this tag
+
+
+2 -- Avatar creator
+
+Used Dicebear

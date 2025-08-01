@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header () {
   return (
     <nav className="flex justify-between items-center px-12 py-4 border-b border-white/10">
-      <h1 className="text-2xl font-bold tracking-tight text-white">StatPad</h1>
+      <Link href={'/'} className="text-2xl font-bold tracking-tight text-purple-600">StatPad</Link>
       <div>
         <SignedIn>
           <UserButton />
