@@ -1,5 +1,5 @@
-import clerkAppearance from "@/lib/clerkAppearance";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default function Header () {
   return (
@@ -11,12 +11,17 @@ export default function Header () {
         </SignedIn>
 
         <SignedOut>
-          <SignInButton mode="modal" appearance={clerkAppearance}>
-            <button className="text-sm px-5 py-2 rounded-2xl bg-purple-600 border border-purple-600 text-white transition-all duration-600 hover:bg-transparent hover:border hover:border-purple-700 hover:text-purple-300 hover:cursor-pointer">Get Started</button>
-          </SignInButton>
+          <div className="space-x-5">
+            <Link href='/sign-in' className="text-sm px-6 py-2.5 rounded-2xl border border-purple-700/80 text-white transition-all duration-600 hover:bg-purple-600 hover:border-purple-600 hover:cursor-pointer">
+              Sign In
+            </Link>
+            <Link href='/sign-up' className="text-sm px-6 py-2.5 rounded-2xl bg-purple-600 border border-purple-600 text-white transition-all duration-600 hover:bg-transparent hover:border hover:border-purple-700 hover:text-purple-300 hover:cursor-pointer">
+              Sign Up
+            </Link>
+          </div>
         </SignedOut>
-      </div>
 
+      </div>
     </nav>
   );
 }

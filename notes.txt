@@ -1,0 +1,9 @@
+FOR LENIS SMOOTH SCROLL
+
+npm install lenis @studio-freight/react-lenis --legacy-peer-deps
+
+<ReactLenis root>
+
+</ReactLenis>
+
+wrap body in layout with this tag

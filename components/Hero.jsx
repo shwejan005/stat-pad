@@ -41,7 +41,7 @@ export default function Hero() {
       >
         <SignInButton mode="modal" appearance={clerkAppearance}>
           <button
-            className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-300 px-6 py-3 rounded-xl text-lg font-medium"
+            className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-500 px-6 py-3 rounded-xl text-lg font-medium hover:cursor-pointer"
           >
             Get Started
           </button>
