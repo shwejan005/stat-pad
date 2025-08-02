@@ -3,8 +3,10 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Link from "next/link"
 import { useUser } from "@clerk/nextjs"
+import { api } from "@/convex/_generated/api"
+import { useMutation } from "convex/react"
+import { useRouter } from "next/navigation"
 
 const styles = [
   "adventurer",
@@ -75,7 +77,9 @@ function AvatarGenerator() {
   const [style, setStyle] = useState("adventurer")
   const [loading, setLoading] = useState(true)
   const [isGenerating, setIsGenerating] = useState(false)
-  const {user} = useUser();
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const router = useRouter()
 
   const avatarUrl = `https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`
 
@@ -83,6 +87,28 @@ function AvatarGenerator() {
     const timer = setTimeout(() => setLoading(false), 2000)
     return () => clearTimeout(timer)
   }, [])
+
+  const { user } = useUser();
+  const updateAvatar = useMutation(api.avatar.updateAvatar);
+
+  async function handleSubmit() {
+    if (!user) return;
+
+    setIsSubmitting(true);
+    try {
+      await updateAvatar({
+        clerkId: user.id,
+        image: `https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`,
+      });
+
+      router.push("/dashboard");
+    } catch (err) {
+      console.error("Failed to update avatar:", err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
 
   const handleRandomize = () => {
     setIsGenerating(true)
@@ -163,7 +189,7 @@ function AvatarGenerator() {
           className="text-center mb-16"
         >
           <h1 className="text-6xl font-bold bg-gradient-to-r from-violet-400 via-violet-300 to-violet-500 bg-clip-text text-transparent mb-4">
-            Welcome, {(user.firstName)? user.firstName: user.username}
+            Welcome, {user?.firstName ? user.firstName : user?.username}
           </h1>
           <p className="text-xl text-violet-200/70 max-w-2xl mx-auto">
             Create stunning avatars with our advanced generator. Choose from dozens of styles and characters.
@@ -377,21 +403,22 @@ function AvatarGenerator() {
               />
               <span className="relative">{isGenerating ? "Generating..." : "Randomize"}</span>
             </motion.button>
-            <Link href={'/dashboard'}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative overflow-hidden px-8 py-4 backdrop-blur-xl bg-black/40 hover:bg-black/60 text-white font-semibold rounded-2xl border border-violet-500/30 hover:border-violet-400/50 shadow-lg transition-all duration-300 hover:cursor-pointer"
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-violet-500/10 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.7 }}
-                />
-                <span className="relative">Set</span>
-              </motion.button>
-            </Link>
+
+            <motion.button
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative overflow-hidden px-8 py-4 backdrop-blur-xl bg-black/40 hover:bg-black/60 text-white font-semibold rounded-2xl border border-violet-500/30 hover:border-violet-400/50 shadow-lg transition-all duration-300 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-violet-500/10 to-transparent"
+                initial={{ x: "-100%" }}
+                whileHover={{ x: "100%" }}
+                transition={{ duration: 0.7 }}
+              />
+              <span className="relative">{isSubmitting ? "Setting..." : "Set Avatar"}</span>
+            </motion.button>
           </motion.div>
 
           {/* Bottom Stats */}
