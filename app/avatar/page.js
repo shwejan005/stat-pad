@@ -163,7 +163,7 @@ function AvatarGenerator() {
           className="text-center mb-16"
         >
           <h1 className="text-6xl font-bold bg-gradient-to-r from-violet-400 via-violet-300 to-violet-500 bg-clip-text text-transparent mb-4">
-            Welcome, {user.firstName}
+            Welcome, {(user.firstName)? user.firstName: user.username}
           </h1>
           <p className="text-xl text-violet-200/70 max-w-2xl mx-auto">
             Create stunning avatars with our advanced generator. Choose from dozens of styles and characters.
@@ -203,7 +203,7 @@ function AvatarGenerator() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleStyleChange(s)}
-                      className={`group relative p-3 rounded-2xl transition-all duration-300 ${
+                      className={`group relative p-3 rounded-2xl transition-all duration-300 hover:cursor-pointer ${
                         style === s
                           ? "bg-gradient-to-br from-violet-500/30 to-violet-600/30 border-2 border-violet-400/50 shadow-lg shadow-violet-500/25"
                           : "bg-black/20 border border-violet-500/20 hover:bg-violet-500/10 hover:border-violet-400/30"
@@ -331,7 +331,7 @@ function AvatarGenerator() {
                   </span>
                 </motion.div>
 
-                <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto custom-scrollbar">
+                <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto custom-scrollbar hover:cursor-pointer">
                   {names.map((name, index) => (
                     <motion.button
                       key={name}

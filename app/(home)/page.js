@@ -1,5 +1,5 @@
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
+import Header from '@/components/ui/Header'
+import Hero from '@/components/ui/Hero'
 import React from 'react'
 
 function Home() {

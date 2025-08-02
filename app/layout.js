@@ -1,8 +1,8 @@
 import { League_Spartan } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
-import { ClerkProvider } from "@clerk/nextjs";
-import Header from "@/components/Header";
+import Header from "@/components/ui/Header";
+import ConvexClerkProvider from "@/components/providers/ConvexClerkProvider";
 
 const font = League_Spartan({
   subsets: ["latin"],
@@ -17,14 +17,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <ClerkProvider>
+      <ConvexClerkProvider>
         <ReactLenis root>
           <body className={`${font.className} antialiased`}>
             <Header />
               {children}
           </body>
         </ReactLenis>
-      </ClerkProvider>
+      </ConvexClerkProvider>
     </html>
   );
 }
