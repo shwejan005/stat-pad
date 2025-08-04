@@ -101,7 +101,7 @@ function AvatarGenerator() {
         image: `https://api.dicebear.com/9.x/${style}/svg?seed=${seed}`,
       });
 
-      router.push("/dashboard");
+      router.push("/onboarding");
     } catch (err) {
       console.error("Failed to update avatar:", err);
     } finally {

@@ -15,6 +15,7 @@ import type {
 } from "convex/server";
 import type * as avatar from "../avatar.js";
 import type * as http from "../http.js";
+import type * as onboarding from "../onboarding.js";
 import type * as users from "../users.js";
 
 /**
@@ -28,6 +29,7 @@ import type * as users from "../users.js";
 declare const fullApi: ApiFromModules<{
   avatar: typeof avatar;
   http: typeof http;
+  onboarding: typeof onboarding;
   users: typeof users;
 }>;
 export declare const api: FilterApi<
