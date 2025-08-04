@@ -42,3 +42,15 @@ export const getUserByClerkId = query({
     return user;
   },
 });
+
+export const searchUsersByUsername = query({
+  args: {
+    keyword: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const allUsers = await ctx.db.query("users").collect();
+    return allUsers.filter((user) =>
+      user.username?.toLowerCase().includes(args.keyword.toLowerCase())
+    );
+  },
+});

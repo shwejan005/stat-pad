@@ -26,7 +26,7 @@ export default function Header() {
 
       <div className="relative">
         <SignedIn>
-          <button onClick={() => setOpen((prev) => !prev)} className="flex items-center gap-2">
+          <button onClick={() => setOpen((prev) => !prev)} className="flex items-center gap-2 hover:cursor-pointer">
             <Image
               src={avatarUrl}
               alt="User Avatar"

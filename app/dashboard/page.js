@@ -7,6 +7,7 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import SearchUsers from "@/components/ui/SearchUsers"
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
@@ -251,6 +252,9 @@ export default function DashboardPage() {
               </motion.button>
             </div>
           </motion.div>
+        </div>
+        <div className="flex items-center justify-center">
+          <SearchUsers />
         </div>
       </div>
 
