@@ -125,7 +125,7 @@ export default function Header() {
                           d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                         />
                       </svg>
-                      <span className="text-sm font-medium">Profile</span>
+                      <span className="text-sm font-medium">View Profile</span>
                     </motion.div>
                   </Link>
 
@@ -177,7 +177,7 @@ export default function Header() {
                 <div className="py-2">
                   <motion.button
                     whileHover={{ backgroundColor: "rgba(239, 68, 68, 0.1)" }}
-                    className="flex items-center gap-3 px-6 py-3 w-full text-left text-white hover:text-red-400 transition-colors duration-200"
+                    className="hover:cursor-pointer flex items-center gap-3 px-6 py-3 w-full text-left text-white hover:text-red-400 transition-colors duration-200"
                     onClick={() => {
                       setOpen(false)
                       signOut()
