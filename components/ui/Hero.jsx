@@ -1,9 +1,10 @@
 'use client'
 
 import clerkAppearance from "@/lib/clerkAppearance";
-import { SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { motion } from "framer-motion";
 import { AlertTriangle, User, Sword, BarChart3 } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -39,13 +40,22 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <SignInButton mode="modal" appearance={clerkAppearance}>
-          <button
-            className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-500 px-6 py-3 rounded-xl text-lg font-medium hover:cursor-pointer"
-          >
+        <SignedIn>
+          <Link href="/dashboard" className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-500 px-6 py-3 rounded-xl text-lg font-medium hover:cursor-pointer">
             Get Started
-          </button>
+          </Link>
+        </SignedIn>
+        
+        <SignedOut>
+          <SignInButton mode="modal" appearance={clerkAppearance}>
+            <button
+              className="border border-purple-600 text-purple-400 hover:bg-purple-600/10 transition-all duration-500 px-6 py-3 rounded-xl text-lg font-medium hover:cursor-pointer"
+            >
+              Get Started
+            </button>
         </SignInButton>
+
+        </SignedOut>
       </motion.div>
 
       {/* Disclaimer */}
