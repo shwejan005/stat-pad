@@ -189,7 +189,7 @@ function AvatarGenerator() {
           className="text-center mb-16"
         >
           <h1 className="text-6xl font-bold bg-gradient-to-r from-violet-400 via-violet-300 to-violet-500 bg-clip-text text-transparent mb-4">
-            Welcome, {user?.firstName ? user.firstName : user?.username}
+            Avatar Generator
           </h1>
           <p className="text-xl text-violet-200/70 max-w-2xl mx-auto">
             Create stunning avatars with our advanced generator. Choose from dozens of styles and characters.

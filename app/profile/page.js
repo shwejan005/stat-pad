@@ -114,10 +114,10 @@ export default function ProfilePage() {
                   className="relative z-10 w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-violet-500/30 shadow-2xl"
                   unoptimized
                 />
-                <Link href="/avatar-generator">
+                <Link href="/avatar">
                   <motion.button
                     whileHover={{ scale: 1.1 }}
-                    className="absolute bottom-2 right-2 w-10 h-10 bg-violet-600 hover:bg-violet-500 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+                    className="hover:cursor-pointer absolute bottom-2 right-2 w-10 h-10 bg-violet-600 hover:bg-violet-500 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
                   >
                     <Edit3 className="w-4 h-4 text-white" />
                   </motion.button>
@@ -160,7 +160,7 @@ export default function ProfilePage() {
                 <Link href="/onboarding">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 hover:from-violet-500 hover:to-violet-600 text-white rounded-xl transition-all duration-300"
+                    className="hover:cursor-pointer flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-700 hover:from-violet-500 hover:to-violet-600 text-white rounded-xl transition-all duration-300"
                   >
                     <Settings className="w-4 h-4" />
                     <span className="text-sm font-medium">Edit Profile</span>

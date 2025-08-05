@@ -98,7 +98,7 @@ export default function DashboardPage() {
         >
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-violet-400 via-violet-300 to-violet-500 bg-clip-text text-transparent mb-2">
-              Command Center
+              Dashboard
             </h1>
             <p className="text-violet-200/70 text-lg">
               Welcome back, {user?.firstName || user?.username || "Developer"}! Ready to battle?

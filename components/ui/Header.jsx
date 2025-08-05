@@ -20,7 +20,6 @@ export default function Header() {
   const username = userData?.username || user?.username || "User"
   const displayName = user?.firstName || user?.fullName || username
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -39,7 +38,7 @@ export default function Header() {
       transition={{ duration: 0.6 }}
       className="flex justify-between items-center px-6 md:px-12 py-6 backdrop-blur-xl bg-black/20 border-b border-violet-500/20 relative z-50"
     >
-      <Link href={"/"} className="text-2xl font-bold tracking-tight">
+      <Link href="/" className="text-2xl font-bold tracking-tight">
         <span className="bg-gradient-to-r from-violet-400 via-violet-300 to-violet-500 bg-clip-text text-transparent">
           StatPad
         </span>
@@ -57,10 +56,10 @@ export default function Header() {
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-violet-600/20 rounded-full blur-sm"
                 animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+                transition={{ duration: 3, repeat: Infinity }}
               />
               <Image
-                src={avatarUrl || "/placeholder.svg"}
+                src={avatarUrl}
                 alt="User Avatar"
                 width={32}
                 height={32}
@@ -88,14 +87,13 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-3 w-64 backdrop-blur-xl bg-violet-500/5 border border-violet-500/20 rounded-2xl shadow-2xl shadow-violet-500/10 overflow-hidden z-50"
+                className="absolute right-0 mt-3 w-64 backdrop-blur-2xl bg-gradient-to-br from-violet-600/30 via-violet-500/30 to-violet-700/30 border border-violet-500/30 rounded-2xl shadow-2xl shadow-violet-500/20 overflow-hidden z-50"
               >
-                {/* User Info Section */}
                 <div className="px-6 py-4 border-b border-violet-500/20">
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <Image
-                        src={avatarUrl || "/placeholder.svg"}
+                        src={avatarUrl}
                         alt="User Avatar"
                         width={40}
                         height={40}
@@ -105,14 +103,16 @@ export default function Header() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-white font-semibold truncate">{displayName}</p>
-                      <p className="text-violet-200/60 text-sm truncate">{user?.primaryEmailAddress?.emailAddress}</p>
+                      <p className="text-violet-200/60 text-sm truncate">
+                        {user?.primaryEmailAddress?.emailAddress}
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Menu Items */}
                 <div className="py-2">
-                  <Link href="/dashboard" onClick={() => setOpen(false)}>
+                  {/* Dashboard */}
+                  <Link href="/profile" onClick={() => setOpen(false)}>
                     <motion.div
                       whileHover={{ backgroundColor: "rgba(139, 69, 193, 0.1)" }}
                       className="flex items-center gap-3 px-6 py-3 text-white hover:text-violet-300 transition-colors duration-200 cursor-pointer"
@@ -129,7 +129,32 @@ export default function Header() {
                     </motion.div>
                   </Link>
 
-                  <Link href="/avatar-generator" onClick={() => setOpen(false)}>
+                  {/* Join Classroom */}
+                  <Link href="/classroom" onClick={() => setOpen(false)}>
+                    <motion.div
+                      whileHover={{ backgroundColor: "rgba(139, 69, 193, 0.1)" }}
+                      className="flex items-center gap-3 px-6 py-3 text-white hover:text-violet-300 transition-colors duration-200 cursor-pointer"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 14l9-5-9-5-9 5 9 5z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"
+                        />
+                      </svg>
+                      <span className="text-sm font-medium">Join Classroom</span>
+                    </motion.div>
+                  </Link>
+
+                  {/* Change Avatar */}
+                  <Link href="/avatar" onClick={() => setOpen(false)}>
                     <motion.div
                       whileHover={{ backgroundColor: "rgba(139, 69, 193, 0.1)" }}
                       className="flex items-center gap-3 px-6 py-3 text-white hover:text-violet-300 transition-colors duration-200 cursor-pointer"
@@ -145,35 +170,10 @@ export default function Header() {
                       <span className="text-sm font-medium">Change Avatar</span>
                     </motion.div>
                   </Link>
-
-                  <Link href="/onboarding" onClick={() => setOpen(false)}>
-                    <motion.div
-                      whileHover={{ backgroundColor: "rgba(139, 69, 193, 0.1)" }}
-                      className="flex items-center gap-3 px-6 py-3 text-white hover:text-violet-300 transition-colors duration-200 cursor-pointer"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span className="text-sm font-medium">Settings</span>
-                    </motion.div>
-                  </Link>
                 </div>
 
-                {/* Divider */}
-                <div className="border-t border-violet-500/20"></div>
+                <div className="border-t border-violet-500/20" />
 
-                {/* Sign Out */}
                 <div className="py-2">
                   <motion.button
                     whileHover={{ backgroundColor: "rgba(239, 68, 68, 0.1)" }}
